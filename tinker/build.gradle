@@ -26,7 +26,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
+//    android.applicationVariants.all { variant ->
+//        variant.outputs.all {
+//            def fileName = "tinker_v${defaultConfig.versionName}_${releaseTime()}_${variant.flavorName}_${variant.buildType.name}.apk"
+//            outputFileName = fileName
+//        }
+//    }
 }
 
 dependencies {
@@ -44,4 +49,9 @@ dependencies {
     //tinker的核心库
     implementation('com.tencent.tinker:tinker-android-lib:1.9.1')
     implementation "com.android.support:multidex:1.0.3"
+}
+
+
+static def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
 }

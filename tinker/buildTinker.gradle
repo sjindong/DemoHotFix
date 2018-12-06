@@ -25,11 +25,11 @@ def getApplyMappingPath() {
     return ext.tinkerApplyMappingPath
 }
 
-def getApplyResourceMappingPath(){
+def getApplyResourceMappingPath() {
     return ext.tinkerApplyResourcePath
 }
 
-def getTinkerIdValue(){
+def getTinkerIdValue() {
     return ext.tinkerID
 }
 
@@ -91,11 +91,17 @@ if (buildWithTinker()) {
                         def fileNamePrefix = "${project.name}-${variant.baseName}"
                         def newFileNamePrefix = hasFlavors ? "${fileNamePrefix}" : "${fileNamePrefix}-${date}"
                         def destPath = hasFlavors ? file("${bakPath}/${project.name}-${date}/${variant.flavorName}") : bakPath
-                        from variant.outputs.outputFile
+//                        from variant.outputs.outputFile
                         into destPath
-                        rename { String fileName ->
-                            fileName.replace("${fileNamePrefix}.apk", "${newFileNamePrefix}.apk")
+                        rename {
+//                            String fileName -
+//                            fileName.replace("${fileNamePrefix}.apk", "${newFileNamePrefix}.apk")
+//                            outputFileName = fileName
+                            variant.outputs.all {
+                                outputFileName = "${newFileNamePrefix}.apk"
+                            }
                         }
+
 
                         from "${buildDir}/outputs/mapping/${variant.dirName}/mapping.txt"
                         into destPath
