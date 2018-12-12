@@ -25,6 +25,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        //使用注解
         javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
     }
 
@@ -32,6 +33,9 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.main
+        }
+        debug{
             signingConfig signingConfigs.main
         }
     }

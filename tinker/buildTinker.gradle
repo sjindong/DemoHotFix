@@ -9,7 +9,7 @@ ext {
     //旧的混淆映射位置，如果开启了混淆，则需要我们手动指定
     tinkerApplyMappingPath = "${bakPath}/"
     //旧的resource位置，需要我们手动指定
-    tinkerApplyResourcePath = "${bakPath}/tinker-release-2018-12-10-14-34-47-R.txt"
+    tinkerApplyResourcePath = "${bakPath}/tinker-release-2018-12-12-16-32-09-R.txt"
     tinkerID = "1.0"
 }
 
