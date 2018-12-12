@@ -1,1 +1,1 @@
-include ':app', ':tinker'
+include ':app', ':tinker', ':robust'
