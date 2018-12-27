@@ -2,11 +2,19 @@ apply plugin: 'com.android.application'
 //robust 热更新
 //制作补丁时将这个打开，auto-patch-plugin紧跟着com.android.application
 //apply plugin: 'auto-patch-plugin'
-apply plugin: 'robust'
+//apply plugin: 'robust'
 
 android {
+    signingConfigs {
+        main {
+            File key = new File(rootProject.ext.signingConfigs["filePath"])
+            keyAlias rootProject.ext.signingConfigs["keyAlias"]
+            keyPassword rootProject.ext.signingConfigs["keyPassword"]
+            storeFile file(key)
+            storePassword rootProject.ext.signingConfigs["storePassword"]
+        }
+    }
     compileSdkVersion 28
-
     defaultConfig {
         applicationId "hotfix.sjd.robust"
         minSdkVersion 21
@@ -16,18 +24,33 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.main
+        }
+        debug {
+            versionNameSuffix "-d"
+            signingConfig signingConfigs.main
         }
     }
+    buildToolsVersion '28.0.3'
+
+    //过滤不必要的版本
+//    android.variantFilter { variant ->
+//        if (variant.buildType.name.equals('debug')) {
+//            variant.getFlavors().each() { flavor ->
+//                if (flavor.name.equals('zhonghuitest')) {
+//                    variant.setIgnore(true)
+//                }
+//            }
+//        }
+//    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
@@ -35,4 +58,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     //robust 热更新
     implementation 'com.meituan.robust:robust:0.4.82'
+}
+
+
+static def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
 }

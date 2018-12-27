@@ -1,0 +1,10 @@
+ext {
+    /*------------------------- 签名配置--------------------------------------*/
+    signingConfigs = [
+            "filePath"     : "../testhotfix.jks",
+            "keyAlias"     : "testhotfix",
+            "keyPassword"  : "testhotfix",
+            "storePassword": "testhotfix"
+    ]
+    /*------------------------- 签名配置--------------------------------------*/
+}
