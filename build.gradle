@@ -3,32 +3,30 @@ apply from: "config.gradle"
 
 buildscript {
     repositories {
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+//        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         google()
         jcenter()
         mavenCentral()
-        maven { url "https://jitpack.io" }
     }
 
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.1'
 
-        //Tinker 热更新
-        classpath('com.tencent.tinker:tinker-patch-gradle-plugin:1.9.1')
-
         //美团 robust 热更新
         classpath 'com.meituan.robust:gradle-plugin:0.4.82'
         classpath 'com.meituan.robust:auto-patch-plugin:0.4.82'
+
+        //Tinker 热更新
+        classpath('com.tencent.tinker:tinker-patch-gradle-plugin:1.9.1')
     }
 }
 
 allprojects {
     repositories {
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+//        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         google()
         jcenter()
         mavenCentral()
-        maven { url "https://jitpack.io" }
     }
 }
 

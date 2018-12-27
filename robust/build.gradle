@@ -1,7 +1,8 @@
 apply plugin: 'com.android.application'
 //robust 热更新
-//制作补丁时将这个打开，auto-patch-plugin紧跟着com.android.application
+//制作插件时打开 ，auto-patch-plugin紧跟着com.android.application
 //apply plugin: 'auto-patch-plugin'
+//制作apk 时打开
 //apply plugin: 'robust'
 
 android {
