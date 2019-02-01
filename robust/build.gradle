@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 //制作插件时打开 ，auto-patch-plugin紧跟着com.android.application
 //apply plugin: 'auto-patch-plugin'
 //制作apk 时打开
-//apply plugin: 'robust'
+apply plugin: 'robust'
 
 android {
     signingConfigs {
@@ -39,15 +39,15 @@ android {
     buildToolsVersion '28.0.3'
 
     //过滤不必要的版本
-//    android.variantFilter { variant ->
+    android.variantFilter { variant ->
+//        variant.setIgnore(true)
 //        if (variant.buildType.name.equals('debug')) {
 //            variant.getFlavors().each() { flavor ->
 //                if (flavor.name.equals('zhonghuitest')) {
-//                    variant.setIgnore(true)
 //                }
 //            }
 //        }
-//    }
+    }
 }
 
 dependencies {
@@ -58,7 +58,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     //robust 热更新
-    implementation 'com.meituan.robust:robust:0.4.82'
+    implementation 'com.meituan.robust:robust:0.4.85'
 }
 
 

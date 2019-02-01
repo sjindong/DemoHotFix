@@ -14,9 +14,7 @@ android {
             storePassword rootProject.ext.signingConfigs["storePassword"]
         }
     }
-
     compileSdkVersion 28
-
     defaultConfig {
         applicationId "hotfix.sjd.tinker"
         minSdkVersion 21
@@ -28,7 +26,6 @@ android {
         //使用注解
         javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
     }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -45,6 +42,7 @@ android {
 //            outputFileName = fileName
 //        }
 //    }
+    buildToolsVersion '28.0.3'
 }
 
 dependencies {
